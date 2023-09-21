@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sign_up_sign_in_practice/color.dart';
+// import 'package:sign_up_sign_in_practice/color.dart';
 
 class MyTextField extends StatefulWidget {
   const MyTextField({
@@ -34,26 +34,51 @@ class _MyTextFieldState extends State<MyTextField> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.sizeOf(context).width;
+
     return Container(
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(150), color: textFieldColor),
-      height: 40,
-      width: 300,
+        borderRadius: BorderRadius.circular(150),
+      ),
+      height: 35,
+      width: screenWidth * 0.23,
       child: TextField(
           controller: widget.controller,
           obscureText: changeObscureText,
           keyboardType: widget.keyboardType,
           decoration: InputDecoration(
+            filled: false,
             contentPadding: const EdgeInsets.only(bottom: 1, top: 1, left: 15),
             border: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                  width: 1.5,
+                )),
+            enabledBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(50),
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                  width: 1.5,
+                )),
+            focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
+              borderSide: const BorderSide(color: Colors.white, width: 1.5),
             ),
+            labelStyle: const TextStyle(color: Colors.white),
             labelText: widget.labelText,
+            suffixStyle: const TextStyle(),
             suffixIcon: widget.haveSuffixIcon == true
                 ? GestureDetector(
                     child: changeObscureText
-                        ? const Icon(Icons.visibility_off)
-                        : const Icon(Icons.visibility),
+                        ? const Icon(
+                            Icons.visibility_off,
+                            color: Colors.white,
+                          )
+                        : const Icon(
+                            Icons.visibility,
+                            color: Colors.white,
+                          ),
                     onTap: () {
                       onTap();
                     },
