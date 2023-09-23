@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-// import 'package:sign_up_sign_in_practice/color.dart';
 import 'package:sign_up_sign_in_practice/sign_up_screen.dart';
 import 'package:sign_up_sign_in_practice/widget.dart';
+import 'package:sign_up_sign_in_practice/extension.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
@@ -11,8 +11,6 @@ class SignInScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.sizeOf(context).width;
-    double screenHeight = MediaQuery.sizeOf(context).height;
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -29,15 +27,15 @@ class SignInScreen extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Center(
               child: SizedBox(
-                width: screenWidth * 0.23,
+                width: 300,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     // crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Image.asset(
                         "assets/images/logo.png",
-                        width: screenWidth * 0.25,
-                        height: screenHeight * 0.25,
+                        width: ScreenSize(context).screenWidth * 0.25,
+                        height: ScreenSize(context).screenHeight * 0.25,
                       ),
                       MyTextField(
                         controller: emailController,
@@ -54,6 +52,8 @@ class SignInScreen extends StatelessWidget {
                         haveSuffixIcon: true,
                       ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
                           TextButton(
                             child: const Text("Forgot Password?",
@@ -63,7 +63,9 @@ class SignInScreen extends StatelessWidget {
                         ],
                       ),
                       Container(
-                        width: screenWidth * 0.23,
+                        width: ScreenSize(context).screenWidth < 1188.0
+                            ? 300
+                            : ScreenSize(context).screenWidth * 0.25,
                         height: 35,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
@@ -91,6 +93,14 @@ class SignInScreen extends StatelessWidget {
                           ),
                         ),
                       ),
+                      // Container(
+                      //   decoration: BoxDecoration(
+                      //     borderRadius: BorderRadius.circular(50),
+                      //     color: Colors.red,
+                      //   ),
+                      //   width: 300,
+                      //   height: 35,
+                      // ),
                       Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -111,6 +121,20 @@ class SignInScreen extends StatelessWidget {
                                       backgroundColor: Colors.transparent)),
                             )
                           ]),
+                      // Text(
+                      //   "${ScreenSize(context).screenWidth}",
+                      //   style: const TextStyle(
+                      //     color: Colors.white,
+                      //     fontSize: 25,
+                      //   ),
+                      // ),
+                      // Text(
+                      //   "${ScreenSize(context).screenWidth * 0.25}",
+                      //   style: const TextStyle(
+                      //     color: Colors.white,
+                      //     fontSize: 25,
+                      //   ),
+                      // ),
                     ]),
               ),
             )),

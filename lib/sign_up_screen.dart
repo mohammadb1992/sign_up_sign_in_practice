@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:sign_up_sign_in_practice/color.dart';
+import 'package:sign_up_sign_in_practice/extension.dart';
 import 'package:sign_up_sign_in_practice/widget.dart';
 import 'package:sign_up_sign_in_practice/sign_in_screen.dart';
 
@@ -19,8 +19,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.sizeOf(context).width;
-    double screenHeight = MediaQuery.sizeOf(context).height;
     return Container(
       decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -40,8 +38,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
               children: [
                 Image.asset(
                   "assets/images/logo.png",
-                  width: screenWidth * 0.25,
-                  height: screenHeight * 0.25,
+                  width: ScreenSize(context).screenWidth * 0.25,
+                  height: ScreenSize(context).screenHeight * 0.25,
                 ),
                 MyTextField(
                     controller: emailController,
@@ -64,7 +62,9 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     labelText: "Confirm Password"),
                 const SizedBox(height: 10),
                 Container(
-                  width: screenWidth * 0.23,
+                  width: ScreenSize(context).screenWidth < 1188.0
+                      ? 300
+                      : ScreenSize(context).screenWidth * 0.25,
                   height: 35,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(150),
@@ -88,7 +88,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       child: const Text("Sign Up")),
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                  const Text("Already have an account?"),
+                  Text("Already have an account?",
+                      style: TextStyle(
+                        color: Colors.blue.shade300,
+                      )),
                   TextButton(
                     onPressed: () {
                       Navigator.push(context,

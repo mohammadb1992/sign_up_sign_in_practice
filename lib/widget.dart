@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-// import 'package:sign_up_sign_in_practice/color.dart';
+import 'package:sign_up_sign_in_practice/extension.dart';
 
 class MyTextField extends StatefulWidget {
   const MyTextField({
@@ -34,57 +34,60 @@ class _MyTextFieldState extends State<MyTextField> {
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.sizeOf(context).width;
-
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(150),
       ),
       height: 35,
-      width: screenWidth * 0.23,
+      width: ScreenSize(context).screenWidth < 1188.0
+          ? 300
+          : ScreenSize(context).screenWidth * 0.25,
       child: TextField(
-          controller: widget.controller,
-          obscureText: changeObscureText,
-          keyboardType: widget.keyboardType,
-          decoration: InputDecoration(
-            filled: false,
-            contentPadding: const EdgeInsets.only(bottom: 1, top: 1, left: 15),
-            border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-                borderSide: const BorderSide(
-                  color: Colors.white,
-                  width: 1.5,
-                )),
-            enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(50),
-                borderSide: const BorderSide(
-                  color: Colors.white,
-                  width: 1.5,
-                )),
-            focusedBorder: OutlineInputBorder(
+        controller: widget.controller,
+        obscureText: changeObscureText,
+        keyboardType: widget.keyboardType,
+        decoration: InputDecoration(
+          filled: false,
+          contentPadding: const EdgeInsets.only(bottom: 1, top: 1, left: 15),
+          border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(50),
-              borderSide: const BorderSide(color: Colors.white, width: 1.5),
-            ),
-            labelStyle: const TextStyle(color: Colors.white),
-            labelText: widget.labelText,
-            suffixStyle: const TextStyle(),
-            suffixIcon: widget.haveSuffixIcon == true
-                ? GestureDetector(
-                    child: changeObscureText
-                        ? const Icon(
-                            Icons.visibility_off,
-                            color: Colors.white,
-                          )
-                        : const Icon(
-                            Icons.visibility,
-                            color: Colors.white,
-                          ),
-                    onTap: () {
-                      onTap();
-                    },
-                  )
-                : null,
-          )),
+              borderSide: BorderSide(
+                color: Colors.pinkAccent.shade100,
+                width: 1.5,
+              )),
+          enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(50),
+              borderSide: BorderSide(
+                color: Colors.pinkAccent.shade100,
+                width: 1.5,
+              )),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(50),
+            borderSide:
+                BorderSide(color: Colors.pinkAccent.shade100, width: 1.5),
+          ),
+          labelStyle: const TextStyle(color: Colors.white),
+          labelText: widget.labelText,
+          suffixIcon: widget.haveSuffixIcon == true
+              ? GestureDetector(
+                  child: changeObscureText
+                      ? const Icon(
+                          Icons.visibility_off,
+                          color: Colors.white,
+                          size: 20,
+                        )
+                      : const Icon(
+                          Icons.visibility,
+                          color: Colors.white,
+                          size: 20,
+                        ),
+                  onTap: () {
+                    onTap();
+                  },
+                )
+              : null,
+        ),
+      ),
     );
   }
 
