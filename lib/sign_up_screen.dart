@@ -85,7 +85,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         backgroundColor: Colors.transparent,
                       ),
                       onPressed: () {},
-                      child: const Text("Sign Up")),
+                      child: const Text("Sign Up",
+                          style: TextStyle(color: Colors.black))),
                 ),
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                   Text("Already have an account?",
@@ -99,7 +100,8 @@ class _SignUpScreenState extends State<SignUpScreen> {
                         return SignInScreen();
                       }));
                     },
-                    child: const Text("Sign In"),
+                    child: const Text("Sign In",
+                        style: TextStyle(color: Colors.white)),
                   )
                 ]),
               ],
