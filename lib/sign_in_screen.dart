@@ -27,7 +27,9 @@ class SignInScreen extends StatelessWidget {
             child: SingleChildScrollView(
                 child: Center(
               child: SizedBox(
-                width: 300,
+                width: ScreenSize(context).screenWidth < 1188.0
+                    ? 300
+                    : ScreenSize(context).screenWidth * 0.25,
                 child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     // crossAxisAlignment: CrossAxisAlignment.end,
@@ -89,7 +91,7 @@ class SignInScreen extends StatelessWidget {
                           ),
                           child: const Text(
                             "Sign In",
-                            style: TextStyle(color: Colors.white),
+                            style: TextStyle(color: Colors.black),
                           ),
                         ),
                       ),
